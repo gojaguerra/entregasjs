@@ -1,91 +1,29 @@
 /* 
-FOR por conteo
-for(desde; hasta; actualizacion) {
-    codigo a repetir
-}
-
+Solicitar un numero entre 1 y 10
+Para terminar se debe ingresar la palabra fin
+Sin ingresas 1 o 5 entra al case particular, sino va al default
 */
 
-/* 
-for(let i=0; i < 5; i++) {
-    console.log("Hola ", i);
-} 
+alert("Para finalizar debe ingresar la palabra fin");
 
+let entrada = prompt("Ingrese un numero del 1 al 10: ").toLowerCase();
 
-
-for(let i=0; i < 5; i=i+1) {
-    console.log("Hola ", i);
-} 
-
-
-
-let nombre="Jose";
-console.log(`Hola ${nombre}`); 
- */
-
-/* let numero = parseInt(promp("ingrese Numero"));
-for (let index=0; index <= 10; index++) {
-    let result = numero * index;
-    let mensaje = `${numero} x ${index} = ${result}`;
-    alert(mensaje);
-} */
-
-/* for(let i=0; i < 5; i++) {
-    
-    if(i===2){
-        
+while (entrada != "fin") {
+  if (parseInt(entrada) >= 1 && parseInt(entrada) <= 10) {
+    switch (parseInt(entrada)) {
+      case 1:
+        alert("Ha ingresado el número UNO");
         break;
-}
-
-    console.log("Hola ", i);
-
-}
-
-console.log("Finalizamos "); */
-
-/* 
-WHILE por condicion
-*/
-
-/* let i = 0;
-while(i < 10){
-    console.log("Hola", i);
-    i++;
-} */
-
-/* let entrada = prompt("ingrese algo");
-while(entrada != "fin"){
-    alert(`ingresaste ${entrada}`);
-    entrada = prompt("ingrese algo");
-} */
-
-/* let i=5;
-do{
-    console.log("Hola", i);
-} while(i<3); */
-
-/* let numero=4;
-switch(numero){
-    case 1:
-        console.log("es un 1");
+      case 5:
+        alert("Ha ingresado el número CINCO");
         break;
-
-    case 3:
-        console.log("es un 3");
+      default:
+        alert(`Ha ingresado ${entrada}`);
         break;
+    }
+  } else {
+    alert("No ingreso un numero en el rango solicitado. Ingreso: " + entrada);
+  }
 
-    default:
-        console.log("no es ninguno");
-        break;
-} */
-
-
-let nacionalidad="Arg"
-switch(nacionalidad){
-    case "Arg":
-        console.log("Argentino");
-        break;
-    default:
-        console.log("oreo user");
-        break;
+  entrada = prompt("Ingrese un numero del 1 al 10: ").toLowerCase();
 }
