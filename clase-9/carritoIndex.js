@@ -59,6 +59,10 @@ export const carritoIndex = (productoId) => {
         const cantidad = carritoCompras.reduce((acumulador, precio) => acumulador + (precio.cantidad), 0);
         let cantidadPedido = document.getElementById("contador-carrito");
         cantidadPedido.innerHTML = `${cantidad}`;
+
+        // actualizo local storage
+        localStorage.setItem("carritoFG", JSON.stringify(carritoCompras));
+
     }
 
     renderProductoCarrito();
@@ -103,6 +107,10 @@ export const carritoDelete = (productoId) => {
         let cantidadPedido = document.getElementById("contador-carrito");
         cantidadPedido.innerHTML = `${cantidad}`;
 
+        // actualizo local storage
+        localStorage.removeItem("carritoFG");
+        localStorage.setItem("carritoFG", JSON.stringify(carritoCompras));
+        
     }
 
 }

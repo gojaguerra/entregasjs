@@ -26,7 +26,7 @@ const mostrarProductos = (productos) => {
         const boton = document.getElementById(`boton${producto.id}`)
         boton.addEventListener('click', () => {
             carritoIndex(producto.id);
-           // alert(`Se agrego ${producto.nombre}`);
+            // alert(`Se agrego ${producto.nombre}`);
 
         })
 
@@ -34,5 +34,30 @@ const mostrarProductos = (productos) => {
 
 }
 
+export function verificoStorage() {
+    let listaProductos;
+    let carritoStorage = JSON.parse(localStorage.getItem("carritoFG"));
+    
+    if (carritoStorage) {
+        listaProductos = carritoStorage;
+    } else {
+        listaProductos = [];
+    }
+    
+    // pongo el contador en cero, por si no hay items en el carrito
+    let cantidadPedido = document.getElementById("contador-carrito");
+    let cantidad=0;
+    cantidadPedido.innerHTML = `${cantidad}`;
 
-mostrarProductos(productos)
+    listaProductos.forEach(ele => {
+        let i=0;
+        for(i=0;i<ele.cantidad;i++){
+        carritoIndex(ele.id);
+        }
+    })
+
+}
+
+mostrarProductos(productos);
+
+verificoStorage();
