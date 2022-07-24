@@ -14,14 +14,33 @@ export const carritoIndex = (productoId) => {
 
         // busco el producto en el carrito
         let buscoProdCarrito = carritoCompras.find(enCarrito => enCarrito.id == productoId)
-
+        
         // si ya esta en el carrito, actualizo cantidad y html
         if (buscoProdCarrito != undefined) {
 
             buscoProdCarrito.cantidad++;
 
             let cantidadNueva = document.getElementById(`cantidad${producto.id}`);
-            cantidadNueva.innerHTML = `<p id="cantidad${producto.id}">Cantidad: ${buscoProdCarrito.cantidad}</p>`;
+            if(cantidadNueva){
+                cantidadNueva.innerHTML = `<p id="cantidad${producto.id}">Cantidad: ${buscoProdCarrito.cantidad}</p>`;
+            } else {
+                let div = document.createElement('div')
+                div.classList.add('productoEnCarrito')
+                div.setAttribute("id",`divprodid${producto.id}`)
+                div.innerHTML = `<p>${producto.nombre}</p>
+                                <p>Precio: ${producto.precio}</p> 
+                                <p id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</p>
+                                <button id="eliminar${producto.id}" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>
+                    `
+                contenedorCarrito.appendChild(div)
+    
+                // agrego evento para poder eliminar producto del carrito
+                const boton = document.getElementById(`eliminar${producto.id}`)
+                boton.addEventListener('click', () => {
+                    carritoDelete(producto.id)
+                })
+    
+            }
 
         } else {
 
@@ -113,4 +132,8 @@ export const carritoDelete = (productoId) => {
         
     }
 
+}
+
+export const carritoVaciar = ()=> {
+    carritoCompras = [];
 }

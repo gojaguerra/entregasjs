@@ -1,4 +1,5 @@
 import { verificoStorage } from "./app.js";
+import { carritoVaciar } from "./carritoIndex.js";
 
 const modalContenedor = document.querySelector('.modal-container');
 const abrirCarrito = document.getElementById('open')
@@ -31,27 +32,48 @@ finalizarCarrito.addEventListener('click', () => {
 
     let contenedor = document.getElementById("modalFinal");
 
-    contenedor.innerHTML = "<h2>Se envio el pedido</h2>";
     let productos = JSON.parse(localStorage.getItem("carritoFG"));
-
+    
     if(productos){
+        contenedor.innerHTML = "<h2>Se envio el pedido</h2><br>";
         productos.forEach(element => {
-            let item = document.createElement("div");
-            item.innerHTML = `cantidad: ${element.cantidad}
-                            ${element.nombre}
-                            - precio unit: $${element.precio}`;
-            contenedor.append(item);
+
+            if(element.cantidad>0){
+                let item = document.createElement("div");
+                item.innerHTML = `cantidad: ${element.cantidad}
+                                ${element.nombre}
+                                - precio unit: $${element.precio}`;
+                contenedor.append(item);
+            }
         });
 
         const precioPedido = productos.reduce((acumulador, precio) => acumulador + (precio.precio * precio.cantidad), 0)
         let item = document.createElement("div");
-        item.innerHTML = `<h3> TOTAL: $${precioPedido}</h3>`
+        item.innerHTML = `<br><h3> TOTAL: $${precioPedido}</h3>`
         contenedor.append(item);
     
+    } else {
+        contenedor.innerHTML = "<h2>No habia ningun pedido!</h2><br>";
     }
 
+    // borra el storage
     localStorage.clear();
+    // borra el array de pedidos
+    carritoVaciar();
+    // cierra formulario modal
     cerrarCarrito.click();
+    // acomoda contadores del carrito header
     verificoStorage();
+
+    // limpia modal del pedido
+    const contenedorCarrito = document.getElementById("carrito-contenedor")
+
+    if(contenedorCarrito){
+        contenedorCarrito.innerHTML = "";
+    }
+
+    let totalPedido = document.getElementById("elTotal");
+    let precioPedido=0;
+    totalPedido.innerHTML = `Total: $${precioPedido}`;
 
 })
