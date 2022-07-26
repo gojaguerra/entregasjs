@@ -35,6 +35,8 @@ const mostrarProductos = (productos) => {
 }
 
 export function verificoStorage() {
+    
+    /*
     let listaProductos;
     let carritoStorage = JSON.parse(localStorage.getItem("carritoFG"));
     
@@ -43,6 +45,9 @@ export function verificoStorage() {
     } else {
         listaProductos = [];
     }
+    */
+
+    const listaProductos = JSON.parse(localStorage.getItem("carritoFG")) || [];
     
     // pongo el contador en cero, por si no hay items en el carrito
     let cantidadPedido = document.getElementById("contador-carrito");
