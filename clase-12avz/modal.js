@@ -104,4 +104,12 @@ enviar.addEventListener('click', () => {
     let precioPedido=0;
     totalPedido.innerHTML = `Total: $${precioPedido}`;
 
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Pedido enviado exitosamente!',
+        showConfirmButton: false,
+        timer: 3000
+      })
+
 })
