@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* header{
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: aquamarine;
+} */
+
+header {
+  background-color: #898B87;
+  position: sticky;
+  top: 0;
+  border-bottom: #3fbbc0 solid 2px;
+  z-index: 100;
+  height: 80px; }
+
+header nav {
+        position: relative;
+        right: 30px;
+}
+
+header h1{
+    position: relative;
+    left: 20px;
+}
+
+#producto-contenedor {
+    display: grid;
+    margin: 90px auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+} 
+
+
+.card .card-image .card-title {
+    color: dodgerblue;
+    position: unset;
+}  
+
+.card{
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px 0px;
+}
+
+.botonCarrito{
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
+  margin-left: 1%;
+}
+
+
+/* Modal */
+.modal-container {
+  
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+
+  justify-content: center;
+  position: fixed; 
+  background-color: transparent;
+  width: 100%;
+  height: 100vh;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  border-radius: 10px ;
+  z-index: 90;
+} 
+
+/* hacer visible el modal  */
+.modal-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+.modal-carrito{
+  width: 30rem;
+  /* height: 10rem; */
+  background-color: whitesmoke;
+  border-radius: 10px ;
+  border-color: black;
+}
+
+
+.productoEnCarrito {
+  border-left: 5px solid lightblue;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.boton-eliminar {
+  background-color: transparent;
+  color: lightblue;
+  border: none;
+  font-size: 18px;
+}
+
+#elTotal{
+  padding: 2px;
+  margin-left: 1%;
+}
+
+footer {
+  margin-top: 10px;
+  margin-bottom: 5px; }
+
+.footerStyle {
+  display: flex;
+  justify-content: center;
+  background: #898b87;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  align-items: flex-start; }
+  .footerStyle .footerCenter {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0; }
+    .footerStyle .footerCenter .footerBrand {
+      display: flex;
+      justify-content: center;
+      /*display: flex;
+      justify-content: center;*/
+      align-items: center;
+      color: azure;
+      font-size: 20px;
+      font-weight: bold; }
+    .footerStyle .footerCenter .footerNav {
+      display: flex;
+      flex-direction: row;
+      margin-left: auto; }
+
+.footerNav .footerItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid white;
+  border-radius: 100px;
+  margin-left: 10px;
+  opacity: 0.5;
+  transition: 0.5s; }
+  .footerNav .footerItem:hover {
+    opacity: 1; }
+  .footerNav .footerItem .footerLink {
+    color: azure; }
