@@ -89,7 +89,7 @@ export const carritoIndex = (productoId) => {
 
 }
 
-export const carritoDelete = (productoId) => {
+export const carritoDeleteOK = (productoId) => {
 
     // buscar el producto dentro de la lista de productos
     let producto = productos.find(producto => producto.id == productoId);
@@ -138,4 +138,29 @@ export const carritoDelete = (productoId) => {
 
 export const carritoVaciar = ()=> {
     carritoCompras = [];
+}
+
+export const carritoDelete = (productoId) => {
+
+    // SWEET ALERT
+    Swal.fire({
+        title: '¿Estas seguro?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            carritoDeleteOK(productoId);
+
+        Swal.fire(
+            'Eliminado!',
+            'El producto ha sido eliminado!',
+            'success'
+        )
+        }
+    })
 }

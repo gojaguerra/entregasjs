@@ -26,7 +26,15 @@ const mostrarProductos = (productos) => {
         const boton = document.getElementById(`boton${producto.id}`)
         boton.addEventListener('click', () => {
             carritoIndex(producto.id);
-            // alert(`Se agrego ${producto.nombre}`);
+
+            // SWEET ALERT
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `Has agregado el producto: ${producto.nombre}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
 
         })
 
@@ -35,19 +43,19 @@ const mostrarProductos = (productos) => {
 }
 
 export function verificoStorage() {
-    
+
     // uso de OPERADORES AVANZADOS LOGICOS OR
     const listaProductos = JSON.parse(localStorage.getItem("carritoFG")) || [];
-    
+
     // pongo el contador en cero, por si no hay items en el carrito
     let cantidadPedido = document.getElementById("contador-carrito");
-    let cantidad=0;
+    let cantidad = 0;
     cantidadPedido.innerHTML = `${cantidad}`;
 
     listaProductos.forEach(ele => {
-        let i=0;
-        for(i=0;i<ele.cantidad;i++){
-        carritoIndex(ele.id);
+        let i = 0;
+        for (i = 0; i < ele.cantidad; i++) {
+            carritoIndex(ele.id);
         }
     })
 
