@@ -81,7 +81,7 @@ finalizarCarrito.addEventListener('click', () => {
 })
 
 
-// ENVIO pedido y vacio local storege
+// ENVIO pedido y vacio local storage
 enviar.addEventListener('click', () => {
 
     // borra el storage

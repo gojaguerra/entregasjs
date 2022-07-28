@@ -18,6 +18,7 @@ export const carritoIndex = (productoId) => {
         // si ya esta en el carrito, actualizo cantidad y html
         if (buscoProdCarrito != undefined) {
 
+            // uso de OPERADORES AVANZADOS SUGAR SINTAX ++
             buscoProdCarrito.cantidad++;
 
             let cantidadNueva = document.getElementById(`cantidad${producto.id}`);
@@ -99,6 +100,7 @@ export const carritoDelete = (productoId) => {
     // lo encontre
     if (buscoProdCarrito != undefined) {
 
+        // uso de OPERADORES AVANZADOS SUGAR SINTAX --
         buscoProdCarrito.cantidad--;
 
         // si el total es cero debo eliminar el item
