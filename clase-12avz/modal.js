@@ -35,7 +35,7 @@ modalContenedor.addEventListener('click', () => {
 
 // muestro el pedido antes de mandarlo
 finalizarCarrito.addEventListener('click', () => {
-
+    
     let contenedor = document.getElementById("modalFinal");
     let productos = JSON.parse(localStorage.getItem("carritoFG"));
     let cantidad;
