@@ -104,12 +104,19 @@ enviar.addEventListener('click', () => {
     let precioPedido=0;
     totalPedido.innerHTML = `Total: $${precioPedido}`;
 
+    // LUXON
+    let DateTime = luxon.DateTime;
+    let dt = DateTime.now();
+    let fechaEntrega = dt.plus({ days: 2 }).toLocaleString()
+
+    // SWEET ALERT
     Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Pedido enviado exitosamente!',
+        text: `El envio llegara el ${fechaEntrega}`,
         showConfirmButton: false,
-        timer: 3000
+        timer: 10000
       })
 
 })
