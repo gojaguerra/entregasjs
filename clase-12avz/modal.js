@@ -10,6 +10,15 @@ const cerrarCarrito = document.getElementById('cerrar')
 const finalizarCarrito = document.getElementById('finalizar')
 const enviarCarrito = document.getElementById('enviar')
 
+// Formulario modal para el envio del pedido
+const myModal = document.getElementById('modalFinalizar')
+const myInput = document.getElementById('customer-name')
+
+// Posiciono el cursor en el campo nombre
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+
 // CLICK PARA ABRIR EL CARRITO - EN EL HEADER
 /* abrirCarrito.addEventListener('click', () => {
     modalContenedor.classList.toggle('modal-active')
