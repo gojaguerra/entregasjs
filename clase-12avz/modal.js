@@ -1,5 +1,9 @@
-import { verificoStorage } from "./app.js";
-import { carritoVaciar } from "./carritoIndex.js";
+import {
+    verificoStorage
+} from "./app.js";
+import {
+    carritoVaciar
+} from "./carritoIndex.js";
 
 /* const modalContenedor = document.querySelector('.modal-container');
 const modalCarrito = document.querySelector('.modal-carrito')
@@ -12,11 +16,11 @@ const enviarCarrito = document.getElementById('enviar')
 
 // Formulario modal para el envio del pedido
 const myModal = document.getElementById('modalFinalizar')
-const myInput = document.getElementById('customer-name')
+const myInputCustomerName = document.getElementById('customer-name')
 
 // Posiciono el cursor en el campo nombre
 myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
+    myInputCustomerName.focus()
 })
 
 // CLICK PARA ABRIR EL CARRITO - EN EL HEADER
@@ -44,7 +48,7 @@ modalContenedor.addEventListener('click', () => {
 
 // muestro el pedido antes de mandarlo
 finalizarCarrito.addEventListener('click', () => {
-    
+
     let contenedor = document.getElementById("modalFinal");
     let productos = JSON.parse(localStorage.getItem("carritoFG"));
     let cantidad;
@@ -52,8 +56,8 @@ finalizarCarrito.addEventListener('click', () => {
     // uso de OPERADORES AVANZADOS TERNARIOS y VERIFICO CANTIDAD DE ITEMS>0
     productos ? cantidad = productos.reduce((acumulador, precio) => acumulador + (precio.cantidad), 0) : 0;
 
-    if(productos && cantidad>0){
-        
+    if (productos && cantidad > 0) {
+
         // PONGO EL BOTON COMO PRIMARIO y ENABLED
         enviarCarrito.classList.remove('btn-secondary')
         enviarCarrito.classList.add('btn-primary')
@@ -62,7 +66,7 @@ finalizarCarrito.addEventListener('click', () => {
         contenedor.innerHTML = "<h2>Confirmación de pedido</h2><br>";
         productos.forEach(element => {
 
-            if(element.cantidad>0){
+            if (element.cantidad > 0) {
                 let item = document.createElement("div");
                 item.innerHTML = `cantidad: ${element.cantidad}
                                 ${element.nombre}
@@ -72,26 +76,41 @@ finalizarCarrito.addEventListener('click', () => {
         });
 
         const precioPedido = productos.reduce((acumulador, precio) => acumulador + (precio.precio * precio.cantidad), 0)
-        
+
         let item = document.createElement("div");
         item.innerHTML = `<br><h3> TOTAL: $${precioPedido}</h3>`
         contenedor.append(item);
-    
+
     } else {
-        
+
         contenedor.innerHTML = "<h2>No habia ningún pedido!</h2><br>";
 
         // PONGO EL BOTON COMO SECUNDARIO y DISABLED
         enviarCarrito.classList.remove('btn-primary')
         enviarCarrito.classList.add('btn-secondary')
-        enviarCarrito.setAttribute("disabled","")
+        enviarCarrito.setAttribute("disabled", "")
     }
- 
+
 })
 
 
 // ENVIO pedido y vacio local storage
-enviar.addEventListener('click', () => {
+enviar.addEventListener('click', (e) => {
+
+    // ACA hay que verificar los datos si estan completos
+    /*     if(myInputCustomerName.value===""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Complete el campo Nombre!',
+                timer: 2000
+              })
+              
+              myInputCustomerName.focus();
+              // e.stopPropagation();
+              finalizarCarrito.click();
+              return;
+        } */
 
     // borra el storage
     localStorage.clear();
@@ -105,18 +124,20 @@ enviar.addEventListener('click', () => {
     // limpia modal del pedido
     const contenedorCarrito = document.getElementById("carrito-contenedor")
 
-    if(contenedorCarrito){
+    if (contenedorCarrito) {
         contenedorCarrito.innerHTML = "";
     }
 
     let totalPedido = document.getElementById("elTotal");
-    let precioPedido=0;
+    let precioPedido = 0;
     totalPedido.innerHTML = `Total: $${precioPedido}`;
 
     // LUXON
     let DateTime = luxon.DateTime;
     let dt = DateTime.now();
-    let fechaEntrega = dt.plus({ days: 2 }).toLocaleString()
+    let fechaEntrega = dt.plus({
+        days: 2
+    }).toLocaleString()
 
     // SWEET ALERT
     Swal.fire({
@@ -126,6 +147,6 @@ enviar.addEventListener('click', () => {
         text: `El envio llegara el ${fechaEntrega}`,
         showConfirmButton: false,
         timer: 10000
-      })
+    })
 
 })
