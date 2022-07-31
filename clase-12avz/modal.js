@@ -15,11 +15,14 @@ const finalizarCarrito = document.getElementById('finalizar')
 const enviarCarrito = document.getElementById('enviar')
 
 // Formulario modal para el envio del pedido
-const myModal = document.getElementById('modalFinalizar')
+
+const myModalUno = document.getElementById('modal-Carrito')
+
+const myModalDos = document.getElementById('modalFinalizar')
 const myInputCustomerName = document.getElementById('customer-name')
 
 // Posiciono el cursor en el campo nombre
-myModal.addEventListener('shown.bs.modal', () => {
+myModalDos.addEventListener('shown.bs.modal', () => {
     myInputCustomerName.focus()
 })
 
@@ -48,7 +51,10 @@ modalContenedor.addEventListener('click', () => {
 
 // muestro el pedido antes de mandarlo
 finalizarCarrito.addEventListener('click', () => {
+    muestraUltimoModal()
+})
 
+function muestraUltimoModal() {
     let contenedor = document.getElementById("modalFinal");
     let productos = JSON.parse(localStorage.getItem("carritoFG"));
     let cantidad;
@@ -91,26 +97,30 @@ finalizarCarrito.addEventListener('click', () => {
         enviarCarrito.setAttribute("disabled", "")
     }
 
-})
+}
 
 
 // ENVIO pedido y vacio local storage
-enviar.addEventListener('click', (e) => {
+enviar.addEventListener('click', () => {
 
     // ACA hay que verificar los datos si estan completos
-    /*     if(myInputCustomerName.value===""){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Complete el campo Nombre!',
-                timer: 2000
-              })
-              
-              myInputCustomerName.focus();
-              // e.stopPropagation();
-              finalizarCarrito.click();
-              return;
-        } */
+    if (myInputCustomerName.value === "") {
+        Swal.fire({
+           icon: 'error',
+           title: 'Oops...',
+           text: 'Complete el campo Nombre!',
+           timer: 2000
+         })
+
+        var modal = bootstrap.Modal.getInstance(myModalUno)
+        modal.toggle();
+        // finalizarCarrito.click();
+        muestraUltimoModal()
+
+        return false;
+    }
+
+    // var modalDos = bootstrap.Modal.getInstance(myModalDos)
 
     // borra el storage
     localStorage.clear();
