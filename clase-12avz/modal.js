@@ -89,7 +89,7 @@ function muestraUltimoModal() {
 
     } else {
 
-        contenedor.innerHTML = "<h2>No habia ningún pedido!</h2><br>";
+        contenedor.innerHTML = "<h2>No hay ningún pedido!</h2><br>";
 
         // PONGO EL BOTON COMO SECUNDARIO y DISABLED
         enviarCarrito.classList.remove('btn-primary')
@@ -101,33 +101,34 @@ function muestraUltimoModal() {
 
 
 // ENVIO pedido y vacio local storage
-enviar.addEventListener('click', () => {
+enviar.addEventListener('click', (e) => {
 
     // ACA hay que verificar los datos si estan completos
     if (myInputCustomerName.value === "") {
-        Swal.fire({
+       /*  Swal.fire({
            icon: 'error',
            title: 'Oops...',
            text: 'Complete el campo Nombre!',
            timer: 2000
-         })
+         }) */
 
-        var modal = bootstrap.Modal.getInstance(myModalUno)
-        modal.toggle();
+       // var modal = bootstrap.Modal.getInstance(myModalUno)
+       // modal.toggle();
+
         // finalizarCarrito.click();
-        muestraUltimoModal()
+       // muestraUltimoModal()
 
         return false;
     }
 
-    // var modalDos = bootstrap.Modal.getInstance(myModalDos)
+e.stopPropagation()
 
     // borra el storage
     localStorage.clear();
     // borra el array de pedidos
     carritoVaciar();
     // cierra formulario modal
-    cerrarCarrito.click();
+    // cerrarCarrito.click();
     // acomoda contadores del carrito header
     verificoStorage();
 
@@ -148,6 +149,9 @@ enviar.addEventListener('click', () => {
     let fechaEntrega = dt.plus({
         days: 2
     }).toLocaleString()
+    
+   /* var modalDos = bootstrap.Modal.getInstance(myModalDos)
+   myModalDos.hide(); */
 
     // SWEET ALERT
     Swal.fire({
@@ -158,5 +162,6 @@ enviar.addEventListener('click', () => {
         showConfirmButton: false,
         timer: 10000
     })
+
 
 })
