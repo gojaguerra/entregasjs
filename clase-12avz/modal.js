@@ -121,7 +121,7 @@ enviar.addEventListener('click', (e) => {
         return false;
     }
 
-e.stopPropagation()
+    e.preventDefault()
 
     // borra el storage
     localStorage.clear();
@@ -150,8 +150,9 @@ e.stopPropagation()
         days: 2
     }).toLocaleString()
     
-   /* var modalDos = bootstrap.Modal.getInstance(myModalDos)
-   myModalDos.hide(); */
+   var modalDos = bootstrap.Modal.getInstance(myModalDos)
+   modalDos.hide();
+
 
     // SWEET ALERT
     Swal.fire({
