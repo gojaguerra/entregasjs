@@ -128,8 +128,6 @@ enviar.addEventListener('click', (e) => {
     localStorage.clear();
     // borra el array de pedidos
     carritoVaciar();
-    // cierra formulario modal
-    // cerrarCarrito.click();
     // acomoda contadores del carrito header
     verificoStorage();
 
