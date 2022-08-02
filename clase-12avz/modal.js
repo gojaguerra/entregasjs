@@ -121,6 +121,7 @@ enviar.addEventListener('click', (e) => {
         return false;
     }
 
+    // previene el evento del boton SUBMIT
     e.preventDefault()
 
     // borra el storage
@@ -150,9 +151,9 @@ enviar.addEventListener('click', (e) => {
         days: 2
     }).toLocaleString()
     
-   var modalDos = bootstrap.Modal.getInstance(myModalDos)
-   modalDos.hide();
-
+    // cierro manualmente el MODAL ya que utilice el preventDefault mas arriba
+    var modalDos = bootstrap.Modal.getInstance(myModalDos)
+    modalDos.hide();
 
     // SWEET ALERT
     Swal.fire({
