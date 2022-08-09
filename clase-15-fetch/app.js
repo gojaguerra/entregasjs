@@ -1,6 +1,6 @@
-import {
+/* import {
     productos
-} from './stock.js'
+} from './stock.js' */
 import {
     carritoIndex
 } from './carritoIndex.js';
