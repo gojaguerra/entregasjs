@@ -5,10 +5,12 @@ import {
     carritoIndex
 } from './carritoIndex.js';
 
+// ARMA LAS CARDS DE LOS PRODUCTOS
 const mostrarProductos = (productos) => {
     const contenedorProductos = document.getElementById('producto-contenedor');
-
+    
     productos.forEach(producto => {
+        
         const div = document.createElement('div')
         div.classList.add('card')
         div.innerHTML += `<div class="card" style="width: 18rem;">
@@ -42,6 +44,8 @@ const mostrarProductos = (productos) => {
 
 }
 
+export { mostrarProductos };
+
 export function verificoStorage() {
 
     // uso de OPERADORES AVANZADOS LOGICOS OR
@@ -61,9 +65,9 @@ export function verificoStorage() {
 
 }
 
-mostrarProductos(productos);
+/* mostrarProductos(productos);
 
-verificoStorage();
+verificoStorage(); */
 
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
