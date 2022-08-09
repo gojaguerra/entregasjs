@@ -4,5 +4,5 @@
     {"id":3, "nombre":"Escritorio Revatible", "desc":"Estructura metalica, tapa de paraiso.", "precio":8000, "img":"src/img/carrito03.jpeg", "cantidad":10},
     {"id":4, "nombre":"Tablas para Picada", "desc":"Madera de eucalipto. Incluye cera para mantenimiento.", "precio":3000, "img":"src/img/carrito04.jpeg", "cantidad":10},
     {"id":5, "nombre":"Perchero de Pared", "desc":"Madera de eucalipto laqueada con perchas aluminio mate.", "precio":5000, "img":"src/img/carrito05.jpeg", "cantidad":10},
-    {"id":6, "nombre":"Lampara Hexagonal", "desc":"Lampara de mesa, madera de eucalipto, con foco vintage.", "precio":7000, "img":"src/img/carrito06.jpeg", "cantidad":10},
+    {"id":6, "nombre":"Lampara Hexagonal", "desc":"Lampara de mesa, madera de eucalipto, con foco vintage.", "precio":7000, "img":"src/img/carrito06.jpeg", "cantidad":10}
 ]

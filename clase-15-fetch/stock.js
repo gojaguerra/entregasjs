@@ -16,13 +16,29 @@ class NewProductos{
 
 }
 
-// CREO LOS PRODUCTOS
+// OBTENGO LOS PRODUCTOS CON FETCH
 const productos = [];
-productos.push(new NewProductos(1,"Lampara Colgante", "Lampara de pared, madera de eucalipto, foco vintage.", 4500, "src/img/carrito01.jpeg",10));
-productos.push(new NewProductos(2,"Soporte Bicicleta", "Encastre metalico en eje rueda delantera", 6500, "src/img/carrito02.jpeg",10));
-productos.push(new NewProductos(3,"Escritorio Revatible", "Estructura metalica, tapa de paraiso.", 8000, "src/img/carrito03.jpeg",10));
-productos.push(new NewProductos(4,"Tablas para Picada", "Madera de eucalipto. Incluye cera para mantenimiento.", 3000, "src/img/carrito04.jpeg",10));
-productos.push(new NewProductos(5,"Perchero de Pared", "Madera de eucalipto laqueada con perchas aluminio mate.", 5000, "src/img/carrito05.jpeg",10));
-productos.push(new NewProductos(6,"Lampara Hexagonal", "Lampara de mesa, madera de eucalipto, con foco vintage.", 7000, "src/img/carrito06.jpeg",10));
+
+const cargarProductos = async () => {
+  const response = await fetch("./data.json")
+  const productosJson = await response.json();
+
+  productosJson.forEach(producto => {
+    productos.push(new NewProductos(producto.id, producto.nombre, producto.desc, producto.precio, producto.img, producto.cantidad));
+  });
+};
+
+cargarProductos();
 
 export { productos };
+
+/* const productosLista = [];
+
+const cargar = async () => {
+  const response = await fetch()
+  const productos = await response.json();
+
+  productos.forEach(producto => {
+    productosLista.push(new Producto(producto. nombre, produco.precio));
+  });
+}; */
