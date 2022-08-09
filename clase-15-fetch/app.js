@@ -65,10 +65,6 @@ export function verificoStorage() {
 
 }
 
-/* mostrarProductos(productos);
-
-verificoStorage(); */
-
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {

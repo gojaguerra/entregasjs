@@ -22,9 +22,9 @@ class NewProductos {
   }
 }
 
-// FUNCION PARA OBTEBNER LOS PRODUCTOS CON FETCH
 const productos = [];
 
+// FUNCION PARA OBTEBNER LOS PRODUCTOS CON FETCH
 const cargarProductos = async () => {
   try {
     const response = await fetch("productos/data.json");
@@ -44,7 +44,10 @@ const cargarProductos = async () => {
       );
     });
 
+    // ARMO LAS CARDS PARA MOSTRAR LOS PRODUCTOS
     mostrarProductos(productos);
+
+    // VERIFICO SI HABIA ALGO EN LOCALSTORAGE
     verificoStorage();
 
   } catch (error) {
